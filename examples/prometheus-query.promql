@@ -1,0 +1,13 @@
+# Example PromQL queries
+
+# CPU usage percentage
+100 - (avg(irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100)
+
+# Memory usage percentage
+(1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100
+
+# Disk usage percentage
+(1 - (node_filesystem_avail_bytes / node_filesystem_size_bytes)) * 100
+
+# HTTP request rate
+rate(http_requests_total[5m])
